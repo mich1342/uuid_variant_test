@@ -1,7 +1,7 @@
 var PGConnector = require("./pg_connector");
 const dotenv = require("dotenv");
 dotenv.config();
-const iter_num = BigInt(process.env.ITERATION_NUM) || 10000;
+const iter_num =10000;
 
 var short = require("short-uuid");
 const translator = short();
@@ -30,7 +30,7 @@ for (let i = 0; i < iter_num; i++) {
               `UPDATE test_data SET test_equals = $1 WHERE test_uuid::TEXT LIKE $2`,
               [evaluation, val.test_uuid],
               (err2, res2) => {
-                console.log(`${i}`);
+                // console.log(`${i}`);
                 if (i >= iter_num - 1) {
                   process.exit();
                 }
